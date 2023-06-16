@@ -12,14 +12,14 @@
       <meta name="keywords" content="" />
 
       <!-- favicon -->
-      <link rel="shortcut icon" href="assets/img/nut.png" type="image/png" />
+      <link rel="shortcut icon" href="assets/img/logo.ico"  />
 
       <title>
         <?php if (!empty($page_title))
         echo remove_junk($page_title);
         elseif(!empty($user))
         echo ucfirst($user['name']);
-        else echo "Easy Business v.1.0.2 - El asistente virtual para tu negocio -- By Yoel.";?>
+        else echo "StockControl-Robenior";?>
       </title>
     
       <!-- Bootstrap -->
