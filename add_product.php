@@ -150,7 +150,7 @@
               </div>
             </div>
             <label for="" class="control-label">Descripción</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" required></textarea>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
 
 
             <style>
@@ -173,7 +173,7 @@
                 </div>
                 <div class="col-md-6">
                   <label for="" class="control-label">Categor&iacute;a</label>
-                  <select class="form-control rounded-left" name="product-categorie">
+                  <select class="form-control rounded-left" name="product-categorie" required>
                     <option value="">Selecciona una categor&iacute;a</option>
                     <?php  foreach ($all_categories as $cat): ?>
                       <option value="<?php echo (int)$cat['id'] ?>">
@@ -185,7 +185,7 @@
               </div>
                 <div class="col-md-6">
                   <label for="" class="control-label">Ubicaci&oacute;n</label>
-                  <input type="text" class="form-control rounded" name="location" placeholder="">
+                  <input type="text" class="form-control rounded" name="location" placeholder="" required>
                 </div>
               </div>
             </div>
@@ -194,7 +194,7 @@
               <div class="row">
                 <div class="col-md-3">
                   <label for="" class="control-label">Cantidad</label>
-                  <input type="number" class="form-control input-number rounded" name="product-quantity" placeholder="" value="1">
+                  <input type="number" class="form-control input-number rounded" name="product-quantity" placeholder="" value="1" required>
                 </div>
                 <div class="col-md-3"><!--separator--></div>
                 <div class="col-md-3">
