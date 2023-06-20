@@ -202,7 +202,7 @@ curl -d"id=1&product-name=Filtro de gasolina&partNo=FILT_AB0F01&category=1&locat
           </div>
           <label for="" class="control-label">Descripción</label>
           <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" 
-          name="description" required><?php echo remove_junk($product['description']);?></textarea>
+          name="description"><?php echo remove_junk($product['description']);?></textarea>
 
               <style>
                 .form-saul div{
@@ -221,7 +221,10 @@ curl -d"id=1&product-name=Filtro de gasolina&partNo=FILT_AB0F01&category=1&locat
                         <?php if(remove_junk($product['state']) == "Malo") {
 
                               echo "<option value='Bueno'>Bueno</option>";
-                        }else{
+                        }else if(remove_junk($product['state']) == "Bueno"){
+                          echo "<option value='Malo'>Malo</option>";
+                        }else if(remove_junk($product['state']) == ""){
+                          echo "<option value='Bueno'>Bueno</option>";
                           echo "<option value='Malo'>Malo</option>";
                         }       
                         ?>
