@@ -24,7 +24,7 @@ si el root de mysql no tiene contrasena:
    Esto crea un usuario 'almacen_admin', con password='admin'. Porteriormente, importe el 
    script 'almacen.sql' para reconstruir la información:
     
-       mysql> source scripts/u279387406_eb_v1_0_2.sql;
+       mysql> source scripts/eb_v1_0_2.sql;
 
 3. Posteriormente, SALGA de la sesión MySQL como root (para prevenir cambios accidentales, 
    lo mejor es permanecer el menor tiempo posible logueado como root en un sistema).
@@ -68,7 +68,7 @@ NOTAS:
    Lo mejor en este caso es exportar primeramente su base de datos, desde la Shell del sistema
    operativo corra:
 
-       $ mysqldump -q -uroot -p --databases u279387406_eb_v1_0_2 > scripts/u279387406_eb_v1_0_2.sql
+       $ mysqldump -q -uroot -p --databases eb_v1_0_2 > scripts/eb_v1_0_2.sql
 
    lo cual creará un fichero similar al que recibió aquí, pero con sus propios datos de DB.
 

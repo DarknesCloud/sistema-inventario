@@ -20,7 +20,7 @@ curl -d"id=1&product-name=Filtro de gasolina&partNo=FILT_AB0F01&category=1&locat
 
 <?php
   if (isset($_POST['update-product'])) {
-		$req_fields = array('product-name','partNo','category','product-image-id','quantity',
+		$req_fields = array('product-name','partNo','category','state','description','product-image-id','quantity',
       'buy-price', 'sale-price', 'location' );
     validate_fields($req_fields);
 
@@ -29,9 +29,10 @@ curl -d"id=1&product-name=Filtro de gasolina&partNo=FILT_AB0F01&category=1&locat
       $p_partNo = remove_junk($db->escape($_POST['partNo'])); 
       $p_cat   = (int)$_POST['category'];
       $p_qty   = remove_junk($db->escape($_POST['quantity']));
+      $p_desc   = remove_junk($db->escape($_POST['description']));
       $p_buy   = remove_junk($db->escape($_POST['buy-price']));
       $p_sale  = remove_junk($db->escape($_POST['sale-price']));
-
+      $p_sta   = remove_junk($db->escape($_POST['state']));
       $p_loc   = remove_junk($db->escape($_POST['location']));
       if (is_null($_POST['product-image-id']) || $_POST['product-image-id'] === "") {
        $media_id = '0';
@@ -43,8 +44,10 @@ curl -d"id=1&product-name=Filtro de gasolina&partNo=FILT_AB0F01&category=1&locat
       $query  .=" partNo ='{$p_partNo}', ";
       $query  .=" categorie_id ='{$p_cat}', ";
       $query  .=" quantity ='{$p_qty}',";
+      $query  .=" description ='{$p_desc}',";
       $query  .=" buy_price ='{$p_buy}',";
       $query  .=" sale_price ='{$p_sale}',";
+      $query  .=" state ='{$p_sta}',";
       $query  .=" location ='{$p_loc}',";
       $query  .=" media_id='{$media_id}'";
       $query  .=" WHERE id ='{$product['id']}'";
@@ -109,7 +112,7 @@ curl -d"id=1&product-name=Filtro de gasolina&partNo=FILT_AB0F01&category=1&locat
 								<label for="partNo" class="control-label">COD/Part No.</label>
 						 		<input type="text" class="form-control rounded" name="partNo"  value="<?php echo remove_junk($product['partNo']);?>">
 							</div>
-							
+
 							<!-- Category -->
 							<div class="col-md-6">
 								<label for="category" class="control-label">Categor&iacute;a</label>
@@ -123,6 +126,8 @@ curl -d"id=1&product-name=Filtro de gasolina&partNo=FILT_AB0F01&category=1&locat
               </div>
           	</div>
 					</div>
+
+          
           
           <div class="form-group">
             <div class="row">
@@ -195,15 +200,41 @@ curl -d"id=1&product-name=Filtro de gasolina&partNo=FILT_AB0F01&category=1&locat
               </div>
             </div>
           </div>
+          <label for="" class="control-label">Descripción</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" 
+          name="description" required><?php echo remove_junk($product['description']);?></textarea>
+
+              <style>
+                .form-saul div{
+                  margin-top: 20px;
+                  margin-bottom: 20px;               
+                }
+              </style>
 
           <div class="form-group">
             <div class="row">
+            <div class="form-saul">
+            <div class="col-md-6">
+                      <label for="" class="control-label">Estado</label>
+                      <select class="form-control rounded-left" name="state" required>
+                        <option value="<?php echo remove_junk($product['state']);?>"><?php echo remove_junk($product['state']);?></option>
+                        <?php if(remove_junk($product['state']) == "Malo") {
+
+                              echo "<option value='Bueno'>Bueno</option>";
+                        }else{
+                          echo "<option value='Malo'>Malo</option>";
+                        }       
+                        ?>
+                      </select>
+                      
+                    </div>
               <!-- Buy Price -->
               <div class="col-md-4">
                 <label for="buy-price" class="control-label">Precio Compra</label>
                 <input type="text" class="form-control rounded text-right" name="buy-price" placeholder="0"
                   value="<?php echo remove_junk($product['buy_price']); ?>">
               </div>
+            </div>
 
               <!--separator-->
               <div class="col-md-2"></div>

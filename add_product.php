@@ -15,6 +15,8 @@
       $p_name  = remove_junk($db->escape($_POST['product-title']));
       $partNo  = remove_junk($db->escape($_POST['partNo'])); 
       $p_cat   = remove_junk($db->escape($_POST['product-categorie']));
+      $p_sta   = remove_junk($db->escape($_POST['product-state']));
+      $p_desc   = remove_junk($db->escape($_POST['description']));
       $p_qty   = remove_junk($db->escape($_POST['product-quantity']));
       $p_buy   = remove_junk($db->escape($_POST['buying-price']));
       $p_sale  = remove_junk($db->escape($_POST['saleing-price']));
@@ -29,9 +31,9 @@
       }
       $date    = make_date();
       $query  = "INSERT INTO products (";
-      $query .=" name,partNo,quantity,buy_price,sale_price,categorie_id,media_id,location,date";
+      $query .=" name,partNo,quantity,description,buy_price,sale_price,categorie_id,state,media_id,location,date";
       $query .=") VALUES (";
-      $query .=" '{$p_name}', '${partNo}', '{$p_qty}', '{$p_buy}', '{$p_sale}', '{$p_cat}', '{$media_id}', '${location}', '{$date}'";
+      $query .=" '{$p_name}', '${partNo}', '{$p_qty}','{$p_desc}', '{$p_buy}', '{$p_sale}', '{$p_cat}', '{$p_sta}' ,'{$media_id}', '${location}', '{$date}'";
       $query .=")";
       //$query .=" ON DUPLICATE KEY UPDATE name='{$p_name}'";
       if($db->query($query)){
@@ -147,9 +149,28 @@
                 </div>
               </div>
             </div>
+            <label for="" class="control-label">Descripción</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" required></textarea>
+
+
+            <style>
+              .form-saul div{
+                margin-top: 20px;
+                margin-bottom: 20px;
+              }
+            </style>
 
             <div class="form-group">
               <div class="row">
+              <div class="form-saul">
+              <div class="col-md-6">
+                  <label for="" class="control-label">Estado</label>
+                  <select class="form-control rounded-left" name="product-state" required>
+                    <option value="">Selecciona una categor&iacute;a</option>
+                      <option value="Bueno">Bueno</option>
+                      <option value="Malo">Malo</option>
+                  </select>
+                </div>
                 <div class="col-md-6">
                   <label for="" class="control-label">Categor&iacute;a</label>
                   <select class="form-control rounded-left" name="product-categorie">
@@ -161,6 +182,7 @@
                     <?php endforeach; ?>
                   </select>
                 </div>
+              </div>
                 <div class="col-md-6">
                   <label for="" class="control-label">Ubicaci&oacute;n</label>
                   <input type="text" class="form-control rounded" name="location" placeholder="">

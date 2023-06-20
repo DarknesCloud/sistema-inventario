@@ -9,8 +9,8 @@
  * Modificado: Julio, 2021.
  */
 
-DROP DATABASE IF EXISTS `u279387406_eb_v1_0_2`;
+DROP DATABASE IF EXISTS `eb_v1_0_2`;
 
 /* borrar el usuario de la aplicación */
-DROP USER IF EXISTS 'u279387406_eb_admin'@'localhost';
+DROP USER IF EXISTS 'eb_admin'@'localhost';
 

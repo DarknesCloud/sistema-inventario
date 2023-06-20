@@ -1,6 +1,6 @@
 -- MySQL dump 10.19  Distrib 10.3.29-MariaDB, for debian-linux-gnu (x86_64)
 --
--- Host: localhost    Database: u279387406_eb_v1_0_2
+-- Host: localhost    Database: eb_v1_0_2
 -- ------------------------------------------------------
 -- Server version	10.3.29-MariaDB-0+deb10u1
 
@@ -16,12 +16,12 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Current Database: `u279387406_eb_v1_0_2`
+-- Current Database: `eb_v1_0_2`
 --
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `u279387406_eb_v1_0_2` /*!40100 DEFAULT CHARACTER SET utf8 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `eb_v1_0_2` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
-USE `u279387406_eb_v1_0_2`;
+USE `eb_v1_0_2`;
 
 --
 -- Table structure for table `categories`
@@ -113,6 +113,8 @@ CREATE TABLE `products` (
   `name` varchar(255) NOT NULL,
   `partNo` varchar(60) NOT NULL,
   `quantity` int(11) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `state` varchar(110) DEFAULT NULL,
   `buy_price` decimal(25,2) DEFAULT 0.00,
   `sale_price` decimal(25,2) DEFAULT 0.00,
   `categorie_id` int(10) unsigned NOT NULL,

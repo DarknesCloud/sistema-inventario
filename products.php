@@ -52,6 +52,8 @@
               <th class="text-center" style="width: 2em;"></th>
               <th class="text-center" style="width: 10%"> Imagen </th>
               <th style="text-align: left;">Producto</th>
+              <th style="text-align: left;">Descripción</th>
+              <th style="text-align: left;">Estado</th>
               <th class="text-center" style="width: 10%;"> COD/PartNo </th>
               <th class="text-center" style="width: 10%;"> Categor&iacute;a </th>
               <th class="text-center" style="width: 10%;"> Stock </th>
@@ -72,6 +74,8 @@
                 <?php endif;?>
               </td>
               <td style="vertical-align: middle"> <?php echo remove_junk($product['name']); ?></td>
+              <td class="text-center" style="vertical-align: middle"> <?php echo remove_junk($product['description']);?></td>
+              <td class="text-center" style="vertical-align: middle"> <?php echo remove_junk($product['state']);?></td>
               <td class="text-center" style="vertical-align: middle"> <?php echo remove_junk($product['partNo']);?></td>
               <td class="text-center" style="vertical-align: middle"> <?php echo remove_junk($product['categorie']);?></td>
 
