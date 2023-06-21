@@ -79,11 +79,11 @@
               <div class="row">
                 <div class="col-md-6">
                   <label for="" class="control-label">COD/Part No</label>
-                  <input type="text" class="form-control form-control-primary rounded" id="partNo" name="partNo" placeholder="" autofocus>
+                  <input type="text" class="form-control form-control-primary rounded" id="partNo" name="partNo" placeholder="" autofocus required>
                 </div>
                 <div class="col-md-6">
                   <label for="" class="control-label">Nombre/T&iacute;tulo</label>
-                  <input type="text" class="form-control form-control-primary rounded" name="product-title" placeholder="">
+                  <input type="text" class="form-control form-control-primary rounded" name="product-title" placeholder="" required>
                 </div>
               </div>
             </div>

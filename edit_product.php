@@ -102,7 +102,7 @@ curl -d"id=1&product-name=Filtro de gasolina&partNo=FILT_AB0F01&category=1&locat
           <div class="form-group">
           	<!-- Product Name -->
             <label for="" class="control-label">Nombre</label>
-            <input type="text" class="form-control form-control-primary rounded" name="product-name" value="<?php echo remove_junk($product['name']);?>" autofocus>
+            <input required type="text" class="form-control form-control-primary rounded" name="product-name" value="<?php echo remove_junk($product['name']);?>" autofocus>
           </div>
           
 					<div class="form-group">
@@ -110,13 +110,13 @@ curl -d"id=1&product-name=Filtro de gasolina&partNo=FILT_AB0F01&category=1&locat
 							<!-- Part No. -->
               <div class="col-md-6">
 								<label for="partNo" class="control-label">COD/Part No.</label>
-						 		<input type="text" class="form-control rounded" name="partNo"  value="<?php echo remove_junk($product['partNo']);?>">
+						 		<input type="text" class="form-control rounded" name="partNo"  value="<?php echo remove_junk($product['partNo']);?>" required>
 							</div>
 
 							<!-- Category -->
 							<div class="col-md-6">
 								<label for="category" class="control-label">Categor&iacute;a</label>
-                <select class="form-control rounded" name="category">
+                <select class="form-control rounded" name="category" required>
                 	<option value="">Selecciona una categoría</option>
                   <?php  foreach ($all_categories as $cat): ?>
                     <option value="<?php echo (int)$cat['id']; ?>" <?php if($product['categorie_id'] === $cat['id']): echo "selected"; endif; ?> >
