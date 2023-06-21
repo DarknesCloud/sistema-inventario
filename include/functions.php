@@ -49,23 +49,23 @@ function verb_mode()
 /*--------------------------------------------------------------*/
 /* Function for Checking input fields not empty
 /*--------------------------------------------------------------*/
-// function validate_fields($var)
-// {
-//   global $errors;
-//   foreach ($var as $field) {
-//     if ( isset( $_POST[$field] ) ) {         // <-- this additional condition was added by Yoel
-//       $val = remove_junk($_POST[$field]);
-//       if(isset($val) && $val==''){
-//         $errors = "'$field'" ." No puede estar en blanco.";
-//         return FALSE;
-//       }
-//     }
-//     else
-//       return FALSE;
-//   }
+function validate_fields($var)
+{
+  global $errors;
+  foreach ($var as $field) {
+    if ( isset( $_POST[$field] ) ) {         // <-- this additional condition was added by Yoel
+      $val = remove_junk($_POST[$field]);
+      // if(isset($val) && $val==''){
+      //   $errors = "'$field'" ." No puede estar en blanco.";
+      //   return FALSE;
+      // }
+    }
+    else
+      return FALSE;
+  }
 
-//   return TRUE;
-// }
+  return TRUE;
+}
 /*--------------------------------------------------------------*/
 /* Function for Display Session Message
    Ex echo displayt_msg($message);
