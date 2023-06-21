@@ -29,7 +29,7 @@ curl -d"id=1&product-name=Filtro de gasolina&partNo=FILT_AB0F01&category=1&locat
       $p_partNo = remove_junk($db->escape($_POST['partNo'])); 
       $p_cat   = (int)$_POST['category'];
       $p_qty   = remove_junk($db->escape($_POST['quantity']));
-      $p_desc   = remove_junk($db->escape($_POST['description']));
+      
       $p_buy   = remove_junk($db->escape($_POST['buy-price']));
       $p_sale  = remove_junk($db->escape($_POST['sale-price']));
       $p_sta   = remove_junk($db->escape($_POST['state']));
