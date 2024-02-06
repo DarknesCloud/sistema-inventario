@@ -136,7 +136,6 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,'Filtro de gasolina','FILT_AB0F01',94,15.00,25.00,1,'X1',1,'2017-06-16 07:03:16'),(2,'Tornillo hexagonal 10mm x 50mm','TOR_HEX_001',23,2.00,3.40,2,'A1',4,'2019-03-01 07:03:16'),(3,'Tornillo hexagonal 8mm x 45mm','TOR_HEX_002',25,2.00,3.00,2,'A2',4,'2019-03-01 07:03:16'),(4,'Tornillo hexagonal 8mm x 50mm','TOR_HEX_003',94,2.00,3.00,2,'X2',4,'2019-03-01 07:03:16'),(5,'Tornillo Phillips1 70mm','TOR_PHI_170',83,2.50,5.10,2,'A1',5,'2019-03-02 07:05:23'),(6,'Tornillo Phillips1 80mm','TOR_PHI_180',90,2.50,4.50,2,'A2',5,'2019-03-02 07:05:34'),(7,'Tornillo Phillips1 90mm','TOR_PHI_190',89,2.50,4.50,2,'X2',5,'2019-03-02 07:06:02'),(8,'Tornillo Phillips2 70mm','TOR_PHI_270',85,2.50,4.50,2,'X4',5,'2019-03-02 07:06:10'),(9,'Tornillo Phillips2 80mm','TOR_PHI_280',86,2.50,4.50,2,'X4',5,'2019-03-02 07:06:15'),(10,'Tornillo Phillips2 90mm','TOR_PHI_290',101,2.50,4.50,2,'X4',5,'2019-03-02 07:06:21'),(11,'Tornillo Phillips3 80mm','TOR_PHI_380',80,3.00,5.20,2,'A1',5,'2020-06-05 17:04:14'),(14,'Tornillo Phillips1 80mm','TOR_PHI_180_2',50,2.90,5.30,2,'A1',5,'2020-06-11 14:20:26'),(21,'Tornillo_5','TOR_HEX_005',102,1.00,1.30,2,'AA2',4,'2021-03-31 12:30:06');
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 

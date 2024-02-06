@@ -1,5 +1,5 @@
 <?php
-  $page_title = 'Procesar Venta';
+  $page_title = 'Procesar Salida';
   require_once('include/load.php');
   // Checkin What level user has permission to view this page
   page_require_level(3);
@@ -70,132 +70,142 @@
 <?php include_once('layouts/header.php'); ?>
 
 <div class="row">
-  <div class="col-md-9">
-    <?php echo display_msg($msg); ?>
-  </div>
+    <div class="col-md-9">
+        <?php echo display_msg($msg); ?>
+    </div>
 </div>
 <div class="row">
-  <div class="col-md-9">
-    <!--<div class="panel panel-default">-->
-    <div class="panel panel-default">
-      <div class="panel-heading clearfix">
-        <strong>
-          <i class="glyphicon glyphicon-plus"></i>
-          <span>Procesar Venta</span>
-        </strong>
-      </div>
-      <div class="panel-body">
-        <div class="col-md-12">
-        <form method="post" action="add_sale.php" class="clearfix">
+    <div class="col-md-9">
+        <!--<div class="panel panel-default">-->
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <strong>
+                    <i class="glyphicon glyphicon-plus"></i>
+                    <span>Procesar Salida</span>
+                </strong>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-12">
+                    <form method="post" action="add_sale.php" class="clearfix">
 
-          <div class="form-group">
-            <div class="row">
-              <div class="col-md-6">
-                <!--<div class="input-group">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <!--<div class="input-group">
                   <span class="input-group-addon"></span>-->
-                <label for="" class="control-label">COD/Part No</label>
-                <input type="text" class="form-control form-control-lg form-control-primary rounded" id="partNo" name="partNo" placeholder="COD/Part No" autofocus>
-                <div id="lst_partNo" style="cursor: pointer;" class="list-group"></div>
-              </div>
-              
-              <div class="col-md-6">
-                <label for="" class="control-label">Nombre producto</label>
-                <input type="text" class="form-control form-control-lg form-control-primary rounded" id="product_name" name="product_name" placeholder="Nombre producto">
-                <div id="lst_product_name" style="cursor: pointer;" class="list-group"></div>
-              </div>
-            </div>
-          </div>
+                                    <label for="" class="control-label">COD/Part No</label>
+                                    <input type="text" class="form-control form-control-lg form-control-primary rounded"
+                                        id="partNo" name="partNo" placeholder="COD/Part No" autofocus>
+                                    <div id="lst_partNo" style="cursor: pointer;" class="list-group"></div>
+                                </div>
 
-          <div class="form-group">
-            <div class="row">
-              <div class="col-md-6">
-                <img class="img-thumbnail" id="product_image" src="" style="height: 10em; display:none", alt="">
-                </div>
-            </div>
-          </div>
+                                <div class="col-md-6">
+                                    <label for="" class="control-label">Nombre producto</label>
+                                    <input type="text" class="form-control form-control-lg form-control-primary rounded"
+                                        id="product_name" name="product_name" placeholder="Nombre producto">
+                                    <div id="lst_product_name" style="cursor: pointer;" class="list-group"></div>
+                                </div>
+                            </div>
+                        </div>
 
-          <div class="form-group">
-            <div class="row">
-              <div class="col-md-6">
-                <label for="" class="control-label">Categor&iacute;a</label>
-                <span class="form-control rounded" id="category"></span>
-              </div>
-              <div class="col-md-6">
-                <label for="" class="control-label">Ubicaci&oacute;n</label>
-                <span class="form-control rounded" id="location"></span>
-              </div>
-            </div>
-          </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <img class="img-thumbnail" id="product_image" src=""
+                                        style="height: 10em; display:none" , alt="">
+                                </div>
+                            </div>
+                        </div>
 
-          <div class="form-group">
-            <div class="row">
-              <div class="col-md-4">
-                <label for="" class="control-label">Fecha</label>
-                <div class="input-group">
-                  <!--<input type="date" class="form-control datePicker" name="date" id="date" data-date data-date-format="yyyy-mm-dd" value="2021-03-15">-->
-                  <input type="text" class="form-control rounded" name="date" id="date" data-date data-date-format="yyyy-mm-dd" placeholder="aaaa-mm-dd">
-                  <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                </div>
-              </div>
-              <div class="col-md-2">
-                <!-- column separator -->
-              </div>
-              <div class="col-md-6">
-                <label for="destination">Destino/Cliente</label>
-                <input type="text" class="form-control rounded" id="destination" name="destination" placeholder="">
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="row">
-              <div class="col-md-3">
-                <label for="" class="control-label">Disponible</label>
-                <span class="form-control rounded" id="stock">0</span>
-              </div>
-              <div class="col-md-3">
-                <!-- column separator -->
-              </div>
-              <div class="col-md-3">
-                <label for="" class="control-label">Cantidad</label>
-                <input type="number" class="form-control input-number rounded" id="quantity" name="quantity" placeholder="0">
-              </div>
-            </div>
-          </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="" class="control-label">Categor&iacute;a</label>
+                                    <span class="form-control rounded" id="category"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="" class="control-label">Ubicaci&oacute;n</label>
+                                    <span class="form-control rounded" id="location"></span>
+                                </div>
+                            </div>
+                        </div>
 
-          <div class="form-group">
-            <div class="row">
-              <!--<div class="col-md-3">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="" class="control-label">Fecha</label>
+                                    <div class="input-group">
+                                        <!--<input type="date" class="form-control datePicker" name="date" id="date" data-date data-date-format="yyyy-mm-dd" value="2021-03-15">-->
+                                        <input type="text" class="form-control rounded" name="date" id="date" data-date
+                                            data-date-format="yyyy-mm-dd" placeholder="aaaa-mm-dd">
+                                        <span class="input-group-addon"><i
+                                                class="glyphicon glyphicon-calendar"></i></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <!-- column separator -->
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="destination">Destino/Cliente</label>
+                                    <input type="text" class="form-control rounded" id="destination" name="destination"
+                                        placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="" class="control-label">Disponible</label>
+                                    <span class="form-control rounded" id="stock">0</span>
+                                </div>
+                                <div class="col-md-3">
+                                    <!-- column separator -->
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="" class="control-label">Cantidad</label>
+                                    <input type="number" class="form-control input-number rounded" id="quantity"
+                                        name="quantity" placeholder="0">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <!--<div class="col-md-3">
                 <label for="" class="control-label">Precio compra</label> 
                 <span class="form-control rounded" id="buy_price">0.00</span>
               </div>-->
-              <div class="col-md-3">
-                <label for="" class="control-label">Precio venta</label> 
-                <input type="text" class="form-control rounded" id="sale_price" name="sale_price" placeholder="0.00">
-              </div>
-              <div class="col-md-3">
-                <!-- column separator -->
-              </div>
-              <div class="col-md-3">
-                <label for="" class="control-label">Total Venta</label>
-                <input type="text" class="form-control rounded" id="total_sale" name="total_sale" placeholder="0.00">
-              </div>
-            </div>
-          </div>
+                                <div class="col-md-3">
+                                    <label for="" class="control-label">Precio </label>
+                                    <input type="text" class="form-control rounded" id="sale_price" name="sale_price"
+                                        placeholder="0.00">
+                                </div>
+                                <div class="col-md-3">
+                                    <!-- column separator -->
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="" class="control-label">Total </label>
+                                    <input type="text" class="form-control rounded" id="total_sale" name="total_sale"
+                                        placeholder="0.00">
+                                </div>
+                            </div>
+                        </div>
 
-          <div class="form-group">
-            <div class="row" style="margin-top: 2.5em;">
-              <div class="col-md-12">
-                <button type="submit" name="add_sale" id="btn_add_sale" class="btn btn-primary pull-left">Procesar Venta</button>
-                <button class="btn btn-warning pull-left" id="refresh">Limpiar</button>
-              </div>
-            </div>
-          </div>
+                        <div class="form-group">
+                            <div class="row" style="margin-top: 2.5em;">
+                                <div class="col-md-12">
+                                    <button type="submit" name="add_sale" id="btn_add_sale"
+                                        class="btn btn-primary pull-left">Procesar Salida</button>
+                                    <button class="btn btn-warning pull-left" id="refresh">Limpiar</button>
+                                </div>
+                            </div>
+                        </div>
 
-        </form>
-       </div>
-      </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <!-- This is the jQuery background for this page -->

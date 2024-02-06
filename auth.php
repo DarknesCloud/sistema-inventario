@@ -13,7 +13,7 @@
        $session->login($user_id);
       //Update Sign in time
        updateLastLogIn($user_id);
-       $session->msg("s", "Bienvenido a StockControl, Sistema de Inventario de Inversiones Robenior.");
+       $session->msg("s", "Bienvenido a StockControl, Sistema de Inventario de SHEKINAH S. A.");
        redirect(SITE_URL.'home.php',false);
     } else if ($user_id == -2) {
       $session->msg("w", "Usuario inactivo");

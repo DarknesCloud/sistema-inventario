@@ -20,7 +20,7 @@
   $delete_id = delete_by_id('sales',(int)$d_sale['id']);
   if($delete_id){
       $session->msg("s","Venta eliminada.");
-      redirect(SITE_URL.'/sales.php');
+      redirect(SITE_URL.'/inventory/sales.php');
   } else {
       $session->msg("d","Eliminación falló");
       redirect(SITE_URL.'/sales.php');
