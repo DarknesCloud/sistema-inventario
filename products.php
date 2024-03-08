@@ -31,7 +31,7 @@
 <?php include_once('layouts/header.php'); ?>
 <!-- carousel -->
 <link rel="stylesheet" href="lib/css/carousel.css">
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <div class="row">
     <div class="col-md-12">
         <?php echo display_msg($msg); ?>
@@ -53,14 +53,14 @@
                         <tr>
                             <th class="text-center" style="width: 2em;"></th>
                             <th class="text-center" style="width: 10%"> Imagen </th>
+                            <th style="text-align: left;">COD/PartNo</th>
+                            <th style="text-align: left;">Fecha</th>
                             <th style="text-align: left;">Producto</th>
-                            <th style="text-align: left;">Descripción</th>
-                            <th style="text-align: left;">Estado</th>
-                            <th class="text-center" style="width: 10%;"> COD/PartNo </th>
+                            <th style="text-align: left;">Descripcion</th>
                             <th class="text-center" style="width: 10%;"> Categor&iacute;a </th>
-                            <th class="text-center" style="width: 10%;"> Stock </th>
-                            <th class="text-center" style="width: 10%;"> Ubicaci&oacute;n </th>
-                            <!--<th class="text-center" style="width: 10%;"> Agregado </th>-->
+                            <th class="text-center" style="width: 10%;"> Precio </th>
+                            <th class="text-center" style="width: 10%;"> Subtotal </th>
+                            <th class="text-center" style="width: 10%;"> Total </th>
                             <th class="text-center"> Acciones </th>
                         </tr>
                     </thead>
@@ -114,6 +114,40 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table>
+            <br>
+            <h1>Grafica</h1>
+
+                <div class='chart'>
+<canvas id="doughnutChart" width="400" height="400"></canvas>
+
+<script>
+// Datos de ejemplo
+var datos = {
+    labels: ['Categoría 1', 'Categoría 2', 'Categoría 3'],
+    datasets: [{
+        data: [30, 50, 20], // Valores para cada categoría
+        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'] // Colores de fondo para cada categoría
+    }]
+};
+
+// Configuración del gráfico
+var opciones = {
+    cutoutPercentage: 50, // Porcentaje de recorte para hacer un gráfico de dona
+    responsive: true,
+    maintainAspectRatio: false
+};
+
+// Obtén el contexto del lienzo
+var ctx = document.getElementById('doughnutChart').getContext('2d');
+
+// Crea el gráfico de dona
+var donaChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: datos,
+    options: opciones
+});
+</script>
+</div>
             </div>
         </div>
     </div>
