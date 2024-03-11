@@ -117,6 +117,10 @@
                                         onclick="return confirm('¿Estás seguro de que deseas eliminar este producto?');">
                                         <span class="glyphicon glyphicon-trash"></span>
                                     </a>
+                                    <a href="stats_categorie.php?id=<?php echo (int)$cat['id'];?>" data-toggle="tooltip"
+                                        title="Grafico Individual">
+                                        <span class="glyphicon glyphicon-stats"></span>
+                                    </a>
                                 </div>
                             </td>
                         </tr>
@@ -160,14 +164,14 @@
             <br>
             <br>
             <div style=" width: auto; height: 35px; display: flex; justify-content: space-around;">
-                <button onclick="cargarScript('script1')" type="button" class="btn btn-primary">Monetario</button>
-                <button onclick="cargarScript('script2')" type="button" class="btn btn-success">Cantidad de uso</button>
+                <button onclick="cargarScript('script2')" type="button" class="btn btn-primary">Monetario</button>
+                <button onclick="cargarScript('script1')" type="button" class="btn btn-success">Cantidad de uso</button>
             </div>
             <br>
             <div style="height: 1px; background-color: #BFBFBF;"></div>
             <div id="graficoContainer" class='chart'>
 
-                <canvas id="doughnutChart" width="400" height="400"></canvas>
+                <canvas id="doughnutChart"></canvas>
 
                 <script>
                 // Definir datos fuera de la función cargarScript
@@ -228,22 +232,23 @@
                         });
                     } else if (scriptNombre === 'script2') {
                         datos = {
+
                             datasets: [{
                                 data: [<?php echo floatval(suma_categorias_26($conexion)); ?>,
-                                    <?php echo floatval(suma_categorias_22($conexion)); ?>,
-                                    <?php echo floatval(suma_categorias_18($conexion)); ?>,
-                                    <?php echo floatval(suma_categorias_16($conexion)); ?>,
-                                    <?php echo floatval(suma_categorias_15($conexion)); ?>,
-                                    <?php echo floatval(suma_categorias_14($conexion)); ?>,
-                                    <?php echo floatval(suma_categorias($conexion)); ?>,
-                                    <?php echo floatval(suma_categorias_20($conexion)); ?>,
-                                    <?php echo floatval(suma_categorias_17($conexion)); ?>,
-                                    <?php echo floatval(suma_categorias_19($conexion)); ?>,
-                                    <?php echo floatval(suma_categorias_23($conexion)); ?>,
-                                    <?php echo floatval(suma_categorias_25($conexion)); ?>,
-                                    <?php echo floatval(suma_categorias_21($conexion)); ?>,
-                                    <?php echo floatval(suma_categorias_24($conexion)); ?>,
-                                    <?php echo floatval(suma_categorias_27($conexion)); ?>
+                                    <?php echo floatval(total_cantidad_categorias_22($conexion)); ?>,
+                                    <?php echo floatval(total_cantidad_categorias_18($conexion)); ?>,
+                                    <?php echo floatval(total_cantidad_categorias_16($conexion)); ?>,
+                                    <?php echo floatval(total_cantidad_categorias_15($conexion)); ?>,
+                                    <?php echo floatval(total_cantidad_categorias_14($conexion)); ?>,
+                                    <?php echo floatval(total_cantidad_categorias($conexion)); ?>,
+                                    <?php echo floatval(total_cantidad_categorias_20($conexion)); ?>,
+                                    <?php echo floatval(total_cantidad_categorias_17($conexion)); ?>,
+                                    <?php echo floatval(total_cantidad_categorias_19($conexion)); ?>,
+                                    <?php echo floatval(total_cantidad_categorias_23($conexion)); ?>,
+                                    <?php echo floatval(total_cantidad_categorias_25($conexion)); ?>,
+                                    <?php echo floatval(total_cantidad_categorias_21($conexion)); ?>,
+                                    <?php echo floatval(total_cantidad_categorias_24($conexion)); ?>,
+                                    <?php echo floatval(total_cantidad_categorias_27($conexion)); ?>
                                 ],
                                 backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C8', '#D87093',
                                     '#6F87D8', '#FF9F40', '#55C500', '#8E7CC3', '#FFD700', '#5E72E4',

@@ -14,64 +14,66 @@ if ($conexion->connect_error) {
     die("Error de conexión: " . $conexion->connect_error);
 }
 
-function suma_categorias($conexion){
+function suma_categorias($conexion, $id){
     // Ejemplo de consulta SQL
-$consulta = "SELECT name,quantity, price FROM products WHERE categorie_id = '13'";
+    $consulta = "SELECT quantity FROM products WHERE categorie_id = '$id'";
 
-// Ejecutar la consulta
-$resultado = $conexion->query($consulta);
-
-$suma_quantity = 0;
-
-// Verificar si la consulta fue exitosa
-if ($resultado) {
-    // Obtener los resultados
-    foreach($resultado as $resultado){
-        // echo $resultado['name']."  /";
-        // echo $resultado['quantity']."  /";
-        // echo $resultado['price']."<br>";
-        // echo $resultado['price']*$resultado['quantity']."<br>";
-        $suma_quantity += $resultado['quantity'];
-    }
-// echo "<br><br><br>".$suma_quantity;
-    // Liberar el resultado
-} else {
-    echo "Error en la consulta: " . $conexion->error;
-}
- return $suma_quantity;
-}
-
-function total_cantidad_categorias($conexion){
-    // Ejemplo de consulta SQL
-$consulta = "SELECT name,quantity, price FROM products WHERE categorie_id = '13'";
-
-// Ejecutar la consulta
+    // Ejecutar la consulta
     $resultado = $conexion->query($consulta);
 
-    $suma_quantity_price = 0;
-    $isv = 0;
+    $registros = array();
 
     // Verificar si la consulta fue exitosa
     if ($resultado) {
-        // Obtener los resultados
-        foreach($resultado as $producto){
-            // Sumar al total acumulado
-            $suma_quantity_price += $producto['price'] * $producto['quantity'];
+        // Obtener los resultados y almacenar en el array $registros
+        foreach ($resultado as $producto) {
+            $registros[] = $producto;
         }
-
-        // Calcular el impuesto (ISV)
-        $isv = $suma_quantity_price * 0.15;
-
-        // Sumar el impuesto al total
-        $suma_quantity_price += $isv;
 
         // Liberar el resultado
     } else {
         echo "Error en la consulta: " . $conexion->error;
     }
 
-    return $suma_quantity_price;
+    return $registros;
 }
+
+
+function total_cantidad_categorias($conexion, $id){
+    // Ejemplo de consulta SQL
+    $consulta = "SELECT name, quantity, price FROM products WHERE categorie_id = '$id'";
+
+    // Ejecutar la consulta
+    $resultado = $conexion->query($consulta);
+
+    $operaciones = array();
+    $isv = 0;
+
+    // Verificar si la consulta fue exitosa
+    if ($resultado) {
+        // Obtener los resultados
+        foreach($resultado as $producto){
+            // Calcular la operación para cada producto
+            $operacion = $producto['price'] * $producto['quantity'];
+            
+            // Guardar la operación en el array
+            $operaciones[] = $operacion;
+        }
+
+        // Calcular el impuesto (ISV)
+        $isv = array_sum($operaciones) * 0.15;
+
+        // Sumar el impuesto al total
+        $total = array_sum($operaciones) + $isv;
+
+        // Liberar el resultado
+    } else {
+        echo "Error en la consulta: " . $conexion->error;
+    }
+
+    return array('operaciones' => $operaciones, 'isv' => $isv, 'total' => $total);
+}
+
 // ***********************************************************************************
 
 function suma_categorias_14($conexion){
