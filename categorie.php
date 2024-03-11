@@ -159,40 +159,134 @@
             </div>
             <br>
             <br>
-            <div class='chart'>
+            <div style=" width: auto; height: 35px; display: flex; justify-content: space-around;">
+                <button onclick="cargarScript('script1')" type="button" class="btn btn-primary">Monetario</button>
+                <button onclick="cargarScript('script2')" type="button" class="btn btn-success">Cantidad de uso</button>
+            </div>
+            <br>
+            <div style="height: 1px; background-color: #BFBFBF;"></div>
+            <div id="graficoContainer" class='chart'>
+
                 <canvas id="doughnutChart" width="400" height="400"></canvas>
 
                 <script>
-                // Datos de ejemplo
-                var datos = {
+                // Definir datos fuera de la función cargarScript
+                let datos;
+                let opciones;
+                let ctx;
+                let donaChart;
 
-                    datasets: [{
-                        data: [<?php echo floatval(suma_categorias($conexion)); ?>, 50,
-                            20
-                        ], // Valores para cada categoría
-                        backgroundColor: ['#FF6384', '#36A2EB',
-                            '#FFCE56'
-                        ] // Colores de fondo para cada categoría
-                    }]
-                };
+                // Función para cargar el script según el botón presionado
+                function cargarScript(scriptNombre) {
+                    // Eliminar el gráfico existente si hay alguno
+                    document.getElementById('graficoContainer').innerHTML = '<canvas id="doughnutChart"></canvas>';
+
+                    // Eliminar el script anterior si hay alguno
+                    let scriptsAnteriores = document.querySelectorAll('script[data-script]');
+                    scriptsAnteriores.forEach(scriptAnterior => scriptAnterior.remove());
 
 
-                // Configuración del gráfico
-                var opciones = {
-                    cutoutPercentage: 50, // Porcentaje de recorte para hacer un gráfico de dona
-                    responsive: true,
-                    maintainAspectRatio: false
-                };
+                    // Crear un nuevo script según el botón presionado
+                    let nuevoScript = document.createElement('script');
+                    nuevoScript.type = 'text/javascript';
 
-                // Obtén el contexto del lienzo
-                var ctx = document.getElementById('doughnutChart').getContext('2d');
+                    if (scriptNombre === 'script1') {
+                        datos = {
+                            datasets: [{
+                                data: [<?php echo floatval(suma_categorias_26($conexion)); ?>,
+                                    <?php echo floatval(suma_categorias_22($conexion)); ?>,
+                                    <?php echo floatval(suma_categorias_18($conexion)); ?>,
+                                    <?php echo floatval(suma_categorias_16($conexion)); ?>,
+                                    <?php echo floatval(suma_categorias_15($conexion)); ?>,
+                                    <?php echo floatval(suma_categorias_14($conexion)); ?>,
+                                    <?php echo floatval(suma_categorias($conexion)); ?>,
+                                    <?php echo floatval(suma_categorias_20($conexion)); ?>,
+                                    <?php echo floatval(suma_categorias_17($conexion)); ?>,
+                                    <?php echo floatval(suma_categorias_19($conexion)); ?>,
+                                    <?php echo floatval(suma_categorias_23($conexion)); ?>,
+                                    <?php echo floatval(suma_categorias_25($conexion)); ?>,
+                                    <?php echo floatval(suma_categorias_21($conexion)); ?>,
+                                    <?php echo floatval(suma_categorias_24($conexion)); ?>,
+                                    <?php echo floatval(suma_categorias_27($conexion)); ?>
+                                ],
+                                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C8', '#D87093',
+                                    '#6F87D8', '#FF9F40', '#55C500', '#8E7CC3', '#FFD700', '#5E72E4',
+                                    '#FF5E3A', '#68B3C8', '#FFB6C1', '#7ED321'
+                                ]
+                            }]
+                        };
+                        opciones = {
+                            cutoutPercentage: 50,
+                            responsive: true,
+                            maintainAspectRatio: false
+                        };
+                        ctx = document.getElementById('doughnutChart').getContext('2d');
+                        donaChart = new Chart(ctx, {
+                            type: 'doughnut',
+                            data: datos,
+                            options: opciones
+                        });
+                    } else if (scriptNombre === 'script2') {
+                        datos = {
+                            datasets: [{
+                                data: [<?php echo floatval(suma_categorias_26($conexion)); ?>,
+                                    <?php echo floatval(suma_categorias_22($conexion)); ?>,
+                                    <?php echo floatval(suma_categorias_18($conexion)); ?>,
+                                    <?php echo floatval(suma_categorias_16($conexion)); ?>,
+                                    <?php echo floatval(suma_categorias_15($conexion)); ?>,
+                                    <?php echo floatval(suma_categorias_14($conexion)); ?>,
+                                    <?php echo floatval(suma_categorias($conexion)); ?>,
+                                    <?php echo floatval(suma_categorias_20($conexion)); ?>,
+                                    <?php echo floatval(suma_categorias_17($conexion)); ?>,
+                                    <?php echo floatval(suma_categorias_19($conexion)); ?>,
+                                    <?php echo floatval(suma_categorias_23($conexion)); ?>,
+                                    <?php echo floatval(suma_categorias_25($conexion)); ?>,
+                                    <?php echo floatval(suma_categorias_21($conexion)); ?>,
+                                    <?php echo floatval(suma_categorias_24($conexion)); ?>,
+                                    <?php echo floatval(suma_categorias_27($conexion)); ?>
+                                ],
+                                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C8', '#D87093',
+                                    '#6F87D8', '#FF9F40', '#55C500', '#8E7CC3', '#FFD700', '#5E72E4',
+                                    '#FF5E3A', '#68B3C8', '#FFB6C1', '#7ED321'
+                                ]
+                            }]
+                        };
+                        opciones = {
+                            cutoutPercentage: 50,
+                            responsive: true,
+                            maintainAspectRatio: false
+                        };
+                        ctx = document.getElementById('doughnutChart').getContext('2d');
+                        donaChart = new Chart(ctx, {
+                            type: 'doughnut',
+                            data: datos,
+                            options: opciones
+                        });
+                    }
 
-                // Crea el gráfico de dona
-                var donaChart = new Chart(ctx, {
-                    type: 'doughnut',
-                    data: datos,
-                    options: opciones
-                });
+                    nuevoScript.innerHTML = `
+        // Configuración del gráfico
+       
+
+        // Obtén el contexto del lienzo
+        
+
+        // Crea el gráfico de dona
+        
+    `;
+
+                    // Adjuntar el nuevo script al contenedor
+                    document.getElementById('graficoContainer').appendChild(nuevoScript);
+                }
+                </script>
+
+                <!-- Inicialmente, cargar el primer script por defecto -->
+                <script>
+                cargarScript('script1');
+                </script>
+
+                <script>
+
                 </script>
             </div>
             <br>
