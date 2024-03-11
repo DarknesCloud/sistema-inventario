@@ -11,7 +11,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <meta name="keywords" content="" />
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- favicon -->
     <link rel="shortcut icon" href="assets/img/logo.ico" />
 

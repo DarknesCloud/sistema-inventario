@@ -267,7 +267,7 @@ function page_require_level($required_level)
 function join_product_table() 
 {
   global $db;
-  $sql  =" SELECT p.id,p.name,p.partNo,p.quantity,p.description,p.state,p.buy_price,p.sale_price,p.location,p.media_id,p.date,c.name";
+  $sql  =" SELECT p.id,p.name,p.partNo,p.quantity,p.price,p.location,p.media_id,p.date,c.name";
   $sql  .=" AS categorie,m.file_name AS image";
   $sql  .=" FROM products p";
   $sql  .=" LEFT JOIN categories c ON c.id = p.categorie_id";

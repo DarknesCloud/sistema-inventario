@@ -51,21 +51,21 @@
                 <table class="table table-hover" id="tbl_products">
                     <thead>
                         <tr>
-                            <th class="text-center" style="width: 10%"> ID </th>
+                            <th class="text-center" style="width: 2em;"></th>
                             <th class="text-center" style="width: 10%"> Imagen </th>
                             <th style="text-align: left;">COD/PartNo</th>
-                            <th style="text-align: left;">Producto</th>
-                            <th class="text-center" style="width: 10%;"> Categor&iacute;a </th>
+                            <th style="text-align: left;">Nombre</th>
                             <th style="text-align: left;">Fecha</th>
-                            <!-- <th class="text-center" style="width: 10%;"> Subtotal </th> -->
-                            <th class="text-center" style="width: 10%;"> Ubicación</th>
-                            <th style="text-align: left;">Cantidad</th>
-                            <th style="text-align: left;">Precio</th>
-                            <th class="text-center" style="width: 10%;"> Total + ISV</th>
+                            <th style="text-align: left;">Producto</th>
+                            <th style="text-align: left;">Descripcion</th>
+                            <th class="text-center" style="width: 10%;"> Categor&iacute;a </th>
+                            <th class="text-center" style="width: 10%;"> Precio </th>
+                            <th class="text-center" style="width: 10%;"> Subtotal </th>
+                            <th class="text-center" style="width: 10%;"> Total </th>
                             <th class="text-center"> Acciones </th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <!-- <tbody>
                         <?php foreach ($products as $product):?>
                         <tr id="<?php echo 'p_id_'.$product['id'];?>">
                             <td class="text-center" style="font-size: 110%; vertical-align: middle">
@@ -77,20 +77,29 @@
                                 <img class="img-avatar" src="uploads/products/<?php echo $product['image']; ?>" alt="">
                                 <?php endif;?>
                             </td>
-                            <td class="text-center" style="vertical-align: middle">
-                                <?php echo remove_junk($product['partNo']);?></td>
                             <td style="vertical-align: middle"> <?php echo remove_junk($product['name']); ?></td>
                             <td class="text-center" style="vertical-align: middle">
+                                <?php echo remove_junk($product['description']);?></td>
+                            <td class="text-center" style="vertical-align: middle">
+                                <?php echo remove_junk($product['state']);?></td>
+                            <td class="text-center" style="vertical-align: middle">
+                                <?php echo remove_junk($product['partNo']);?></td>
+                            <td class="text-center" style="vertical-align: middle">
                                 <?php echo remove_junk($product['categorie']);?></td>
+
+                            <td class="text-center" style="vertical-align: middle;"> <input type="number"
+                                    class="form-control"
+                                    style="width: 5em; margin:auto; text-align: center; font-size: 110%; font-weight:bold; background-color: #808080; color: white; padding: 5%; padding-right: 0;"
+                                    name="quantity" id="<?php echo 'q_id_'.$product['id'];?>"
+                                    value="<?php echo $product['quantity'];?>"></td>
+
+                            <td class="text-center" style="vertical-align: middle">
+                                <?php echo remove_junk($product['location']);?>
+                            </td>
                             <td class="text-center" style="vertical-align: middle">
                                 <?php echo read_date($product['date']); ?></td>
                             <td class="text-center" style="vertical-align: middle">
-                                <?php echo remove_junk($product['location']);?></td>
-                            <td class="text-center" style="vertical-align: middle">
-                                <?php echo remove_junk($product['quantity']);?></td>
-                            <td class="text-center" style="vertical-align: middle">
-                                <?php echo remove_junk($product['price']);?></td>
-                            <td>Total</td>
+                                <?php echo read_date($product['date']); ?></td>
 
                             <td class="text-center" style="vertical-align: middle">
                                 <div class="btn-group">
@@ -105,10 +114,9 @@
                                     </a>
                                 </div>
                             </td>
-
                         </tr>
                         <?php endforeach; ?>
-                    </tbody>
+                    </tbody> -->
                 </table>
                 <br>
                 <h1>Grafica</h1>
